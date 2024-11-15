@@ -1,12 +1,5 @@
 Start_Of_Code
 
-[
-  {"author":"James",
-  "content":"Be a good boy"
-  },
-   {"author":"John",
-  "content":"Be a better boy"
-   }
-]
+            <h1>CGPA <br />Calculator</h1>
 
 End_Of_Code
