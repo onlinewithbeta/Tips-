@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Daily Tips</title>
+  <style type="text/css" media="all">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .AuxPage {
+      background-color: #f9f9f9;
+      position: fixed;
+      top: 0;
+      z-index: 12;
+      overflow-y: scroll;
+      width: 100vw;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark .AuxPage {
+      background-color: #333;
+    }
+
+    .head {
+      width: 100vw;
+      height: 8vh;
+      padding: 3vh;
+      display: grid;
+      grid-template-columns: 2fr 10fr;
+      gap: 2px;
+      background-color: #004FBF;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .head>* {
+      display: grid;
+      margin: 0;
+      font-size: 6vh;
+    }
+
+    .close_Aux {
+      font-weight: 800;
+      color: #CA002C;
+      cursor: pointer;
+    }
+
+    #tip_container {
+      margin: 40px auto;
+      max-width: 70vw;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #tip {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    #author {
+      margin-top: 10px;
+      float: right;
+      font-size: 14px;
+      color: #666;
+    }
+
+    #update-btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+     position: absolute;
+     top: 80vh;
+     right: 40vw;
+    }
+
+    #update-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="tipsPage" class="AuxPage">
+    <div class="head">
+      <div class="close_Aux">X</div>
+      <h2 class="Aux_Title">Daily Tips</h2>
+    </div>
+    <div id="tip_container">
+      <div id="tip">
+        After reading a section of your textbook or lecture notes, take a few minutes to summarize what you learned in your own words. This helps reinforce your understanding and identifies areas that may require further study.
+      </div>
+      <span id="author">~Believe Robert</span>
+      <button id="update-btn">Update Tip</button>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('update-btn').addEventListener('click', function() {
+      // Add update tip functionality here
+      alert('Tip updated!');
+    });
+  </script>
+</body>
+</html>
