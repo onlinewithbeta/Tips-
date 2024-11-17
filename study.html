@@ -58,17 +58,17 @@
     <div class="container">
         <h1>Study Music</h1>
         <ul class="playlist" id="playlist">
-            <li class="playlist-item" data-src="music/track1.mp3">Track 1 - Soft Instrumental</li>
-            <li class="playlist-item" data-src="music/track2.mp3">Track 2 - Nature Sounds</li>
-            <li class="playlist-item" data-src="music/track3.mp3">Track 3 - Chill Beats</li>
-            <li class="playlist-item" data-src="music/track4.mp3">Track 4 - Classical Piano</li>
-            <li class="playlist-item" data-src="music/track5.mp3">Track 5 - Meditation Music</li>
+            <li class="playlist-item" data-src="https://freemusicarchive.org/track/download/21859">Track 1 - Soft Instrumental</li>
+            <li class="playlist-item" data-src="https://freemusicarchive.org/track/download/16700">Track 2 - Nature Sounds</li>
+            <li class="playlist-item" data-src="https://freemusicarchive.org/track/download/20910">Track 3 - Chill Beats</li>
+            <li class="playlist-item" data-src="https://freemusicarchive.org/track/download/22162">Track 4 - Classical Piano</li>
+            <li class="playlist-item" data-src="https://freemusicarchive.org/track/download/17835">Track 5 - Meditation Music</li>
         </ul>
         <div class="controls">
             <button class="play-button" onclick="playMusic()">Play</button>
             <button class="stop-button" onclick="stopMusic()">Stop</button>
         </div>
-        <audio id="audioPlayer"></audio>
+        <audio id="audioPlayer" controls style="display: none;"></audio>
     </div>
 
     <script>
