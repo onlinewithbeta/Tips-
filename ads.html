@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+    <img src="https://drive.google.com/thumbnail?id=12VpjN9ladPJ1-aA00vCyZemIAsDEpYoc" alt="My Image">
+    
+    <img src="https://drive.google.com/thumbnail?id=1pWNAILBLChQPHl2wtwi1WVPmXfhdjdV2" alt="My Google Drive Image">
+    
+    <img id="myImage" src="https://drive.google.com/thumbnail?id=1pWNAILBLChQPHl2wtwi1WVPmXfhdjdV2" alt="My Google Drive Image">
+
+<script>
+    const img = document.getElementById("myImage");
+    
+    img.addEventListener("error", function() {
+        this.src = "https://drive.google.com/thumbnail?id=1pWNAILBLChQPHl2wtwi1WVPmXfhdjdV2";
+    });
+    
+</script>
+</body>
+
+</html>

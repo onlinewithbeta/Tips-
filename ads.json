@@ -1,0 +1,38 @@
+Start_Of_Code
+
+Ads_Img_S 
+    https://drive.google.com/thumbnail?id=1pWNAILBLChQPHl2wtwi1WVPmXfhdjdV2 
+Ads_Img_E
+
+Ads_Url_S 
+    https://onlinewithbetacom.wordpress.com/
+Ads_Url_E
+
+Ads_Alt_S 
+    Ads1
+Ads_Alt_E
+
+Ads_Owner_S 
+  Owner1 
+Ads_Owner_E
+
+
+
+Ads_Img_S  HttpRequest Ads_Img_E
+Ads_Url_S  HttpRequest Ads_Url_E
+Ads_Alt_S  Big alt Ads_Alt_E
+Ads_Owner_S  Owner2 Ads_Owner_E
+
+
+
+Ads_Img_S  HttpRequest Ads_Img_E
+Ads_Url_S  HttpRequest Ads_Url_E
+Ads_Alt_S  Big alt Ads_Alt_E
+Ads_Owner_S  Owner3 Ads_Owner_E
+
+Ads_Img_S  HttpRequest Ads_Img_E
+Ads_Url_S  HttpRequest Ads_Url_E
+Ads_Alt_S  Big alt Ads_Alt_E
+Ads_Owner_S  Owner4 Ads_Owner_E
+
+End_Of_Code

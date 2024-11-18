@@ -17,6 +17,7 @@ if (navigator.onLine) {
 }
 
 
+
 //requestTips
 function requestTips(address) {
     app.HttpRequest("GET", address, null, null, handleReply);
