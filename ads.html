@@ -47,13 +47,13 @@
 if (navigator.onLine) {
     requestTips("https://github.com/onlinewithbeta/Tips-/blob/main/Tips.json");
     //ad ads own
-  requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/Tips.json");
+  requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
 } else {
     //update Tips whenever user comes onLine
     window.addEventListener('online', ()=> {
         requestTips("https://github.com/onlinewithbeta/Tips-/blob/main/Tips.json");
             //ad ads own
-           requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/Tips.json");
+           requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
     });
 }
 
