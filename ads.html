@@ -14,9 +14,12 @@
 
 <body>
     <input type="text" name="" id="" value="" />
-    <img id="ads_Hold" src="https://drive.google.com/thumbnail?id=1V0AZOmo6mT9wFSQxLwj_gWzkviBna84" alt="ads_Hold" />
-    <script type="text/javascript" charset="utf-8">
-        let In_Built_Tips = `Author_S Ogfline onr Author_E
+
+    <img id="GPA_Ads" src="https://drive.google.com/thumbnail?id=1V0AZOmo6mT9wFSQxLwj_gWzkviBna84" alt="ads_Hold" />
+        <img id="CGPA_Ads" src="https://drive.google.com/thumbnail?id=1V0AZOmo6mT9wFSQxLwj_gWzkviBna84" alt="ads_Hold" />
+
+<script>
+   let In_Built_Tips = `Author_S Ogfline onr Author_E
         Quote_S   So offline1 Quote_E
 
         Author_S Ogfline 2 Author_E
@@ -28,20 +31,20 @@
         //Ads in buult
         let In_Built_Ads = `
         
-        Ads_Img_S  https://drive.google.com/thumbnail?id=1VxQGzHp9IjIraihvV-oUpGtGyM  Ads_Img_E
+        Ads_Img_S  https://drive.google.com/thumbnail?id=1VxQGzHp9IjIrapGtGyM  Ads_Img_E
         Ads_Url_S    https://uuu.wordpress.com  Ads_Url_E
         Ads_Alt_S   Ads 2  Ads_Alt_E
         Ads_Owner_S   Owner2  Ads_Owner_E
 
 
-        Ads_Img_S  https://drive.google.com/thumbnail?id=1Vn6XI9j9nJ4zBTiHOF1bkbBgz35 Ads_Img_E
+        Ads_Img_S  https://drive.google.com/thumbnail?id=1Vn6XI9j9nJ4zBTbkbBgz35 Ads_Img_E
         Ads_Url_S  HttpRequest Ads_Url_E
         Ads_Alt_S  Ads3 alt Ads_Alt_E
         Ads_Owner_S  Owner3 Ads_Owner_E
         `;
 
         let raw_Ads = "Nothing ";
-
+/*
         //Finish the ads js later
         
 if (navigator.onLine) {
@@ -57,7 +60,7 @@ if (navigator.onLine) {
     });
 }
 
-
+*/
         //requestTips
         function requestTips(address) {
             app.HttpRequest("GET", address, null, null, handleReply);
@@ -228,33 +231,15 @@ if (navigator.onLine) {
                 let current_Ad = getRandomItem(Ads);
                 console.log(current_Ad);
                 //displayAds
-                let Ads_Hold = Id('ads_Hold');
-                Ads_Hold.src = current_Ad.Img;
-                Ads_Hold.alt = current_Ad.Alt;
-                let retryCount = 0;
-                /*Handle error*/
-                Ads_Hold.addEventListener("error", () => {
-                    if (retryCount < 2) {
-                        setTimeout(function() {
-                            retryCount++;
-                            console.log('Image failed to load. Retry count: ' + retryCount);
-                            // Use a timeout to allow input focus
-
-                            Ads_Hold.src = current_Ad.Img; // Reload the same image URL
-                            console.log('Retrying to load image...');
-
-                        }, 1000);
-                    }
-
-                });
-
-                if (navigator.onLine) {
-                    console.log('You are online');
-                } else {
-                    console.log('You are offline');
-                }
-
-
+                let GPA_Ads = Id('GPA_Ads');
+                let CGPA_Ads = Id('CGPA_Ads');
+                
+                CGPA_Ads.src = current_Ad.Img;
+                CGPA_Ads.alt = current_Ad.Alt;
+                GPA_Ads.src = current_Ad.Img;
+                GPA_Ads.alt = current_Ad.Alt;
+                
+               
 
             } else {
                 //No stored
@@ -262,17 +247,14 @@ if (navigator.onLine) {
                 displayAds();
             }
         }
-        localStorage.clear();
-        setInterval(displayAds, 5000);
+        displayAds();
+        setInterval(displayAds, 3000);
         displayTips();
-
-
-
-        //funtion that gets Element By Id
+       //funtion that gets Element By Id
         function Id(id) {
             return document.getElementById(id);
         }
-    </script>
+</script>
 </body>
 
 </html>
