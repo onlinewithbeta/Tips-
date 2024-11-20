@@ -24,7 +24,6 @@
  let raw_Ads = "Nothing ";
  
  
- 
  /*
          //Finish the ads js later
          

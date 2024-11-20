@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>About</title>
+  <style type="text/css" media="all">
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .AuxPage {
+      position: fixed;
+      top: 0;
+      z-index: 12;
+      overflow-y: scroll;
+      width: 100vw;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark .AuxPage {
+      background-color: #333;
+    }
+
+    .head {
+      width: 100vw;
+      height: 8vh;
+      padding: 3vh;
+      display: grid;
+      grid-template-columns: 2fr 10fr;
+      gap: 2px;
+      background-color: #004FBF;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .head>* {
+      display: grid;
+      margin: 0;
+      font-size: 6vh;
+    }
+
+    .close_Aux {
+      font-weight: 800;
+      color: #CA002C;
+      cursor: pointer;
+    }
+
+    #aboutContainer {
+      margin: 40px auto;
+      max-width: 70vw;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #aboutContainer h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    #aboutContainer em {
+      font-size: 16px;
+      color: #666;
+    }
+
+    #aboutContainer b {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .toMe {
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="aboutPage" class="AuxPage">
+    <div class="head">
+      <div class="close_Aux"> X </div>
+      <h2 class="Aux_Title">About</h2>
+    </div>
+    <div id="aboutContainer">
+      <img class="icon" src="Img/mainIcon.png" alt="" />
+      <h3>CGPA Calculator</h3>
+      <em>version 1.7.0</em>
+      <br />
+      <br />
+      <b>Developed by:</b>
+      <br />
+      <span class="toMe" id="myName"> Oxiaru</span>
+      <br />
+      <br />
+      <b>Phone :</b>
+      <span class="toMe" id="myNumber">+2349064498317</span>
+      <br />
+      <br />
+      <b>Email :</b>
+      <span class="toMe" id="myEmail">believerobert3@gmail.com</span>
+      <br />
+      <br />
+    </div>
+  </section>
+</body>
+</html>
