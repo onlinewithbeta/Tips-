@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch JSON Example</title>
+    <style>
+        #content {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetch JSON Data</h1>
+    <button id="fetchButton">Fetch Tips</button>
+    <div id="loading" style="display:none;">Loading...</div>
+    <div id="error" style="color: red;"></div>
+    <div id="content"> keep it op</div>
+
+    <script>
+        document.getElementById('fetchButton').addEventListener('click', function() {
+            const url = 'https://raw.githubusercontent.com/onlinewithbeta/Tips-/main/Tips.json'; // Raw URL for JSON
+            const contentDiv = document.getElementById('content');
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+
+            // Clear previous content and errors
+            contentDiv.innerHTML = '';
+            errorDiv.innerHTML = '';
+
+            // Show loading indicator
+            loadingDiv.style.display = 'block';
+
+            const xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
+            xhr.open('GET', url, true); // Initialize the request
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) { // Check if request is complete
+                    loadingDiv.style.display = 'none'; // Hide loading indicator
+                    if (xhr.status === 200) {
+                        // Successfully fetched the content
+                        const jsonData = JSON.parse(xhr.responseText); // Parse the JSON response
+                        displayTips(jsonData); // Pass the data to display function
+                    } else {
+                        // Handle error
+                        errorDiv.innerHTML = `Error fetching the data: ${xhr.status}`;
+                    }
+                }
+            };
+
+            xhr.send(); // Send the request
+
+            // Function to display the tips
+            function displayTips(data) {
+                // Assuming data is an array of tips
+                if (Array.isArray(data)) {
+                    data.forEach(tip => {
+                        const tipDiv = document.createElement('div');
+                        tipDiv.textContent = tip; // Display each tip
+                        contentDiv.appendChild(tipDiv);
+                    });
+                } else {
+                    contentDiv.innerHTML = 'No tips found or incorrect data format.';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
