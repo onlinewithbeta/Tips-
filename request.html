@@ -871,17 +871,12 @@ ${GradeOption}
           button.removeEventListener('click', addingRowFun);
           // Remove the custom attribute
           delete button.dataset.hasListener;
-          console.log(`Removed listener`);
           button.dataset.hasListener = false;
         } else {
           // Add event listener for button click
           button.addEventListener("click", addingRowFun);
           button.dataset.hasListener = true;
         }
-        if (button.dataset.hasListener === false) {
-          console.log(false);
-        }
-
       });
     }
 
@@ -892,7 +887,6 @@ ${GradeOption}
           // Create a new year element
           const newYear = document.createElement("div");
           let y = document.querySelectorAll(".Year_Container").length + 1;
-          console.log(y);
           newYear.classList.add("Year_Container");
           newYear.id = `Y${y}`;
           Id("CGPA_Container").appendChild(newYear);
@@ -1223,14 +1217,15 @@ ${GradeOption}
       try {
         requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
       } catch (e) {
-        console.log(e)
+          console.log("Thata err");
+        console.log(e);
       }
     } else {
       window.addEventListener('online', () => {
         try {
           requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
         } catch (e) {
-          console.log(e)
+          console.log("Thata err");
         }
       });
     }
@@ -1242,7 +1237,6 @@ ${GradeOption}
       function handleReply(error, reply) {
         if (error) {
           alert('Network Error  :   ' + reply);
-          app.Exit();
         } else {
 
           // Extract data between the specified markers
