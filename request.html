@@ -1,71 +1,1356 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch JSON Example</title>
-    <style>
-        #content {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
+  <title>GPA Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="Html/style.css" type="text/css" />
+  <link rel="stylesheet" href="Html/UI.css" type="text/css" />
+
+  <style type="text/css" media="all">
+    .app-container,
+    #CGPA_Div,
+    #GPA_Div {
+      display: none;
+    }
+  </style>
+  <script src="ds:/Sys/app.js"></script>
 </head>
-<body>
-    <h1>Fetch JSON Data</h1>
-    <button id="fetchButton">Fetch Tips</button>
-    <div id="loading" style="display:none;">Loading...</div>
-    <div id="error" style="color: red;"></div>
-    <div id="content"> keep it op</div>
+
+<body id="body">
+
+  <div id="startPage">
+    <header>
+      <h1>CGPA <br />Calculator</h1>
+      <p>
+        Your academic journey made easy!
+      </p>
+      <a class="btn">Get Started</a>
+    </header>
+
+    <section id="features">
+      <h2>Features</h2>
+      <div class="feature-list">
+
+
+        <div id="CGPA_Button" class="feature">
+          <h3> CGPA Calculation</h3>
+          <p>
+            calculate you CGPA within seconds.
+          </p>
+        </div>
+
+
+        <div id="GPA_Button" class="feature">
+          <h3> GPA Calculation</h3>
+          <p>
+            calculate you GPA within seconds.
+          </p>
+        </div>
+
+
+
+        <div class="feature">
+          <h3>Save Your Data</h3>
+          <p>
+            Save your calculations and access them anytime, anywhere.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Progress Tracking</h3>
+          <p>
+            Monitor your academic performance over semesters with ease.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Build by: <a href="#">Osiaru</a>
+      </p>
+
+    </footer>
 
     <script>
-        document.getElementById('fetchButton').addEventListener('click', function() {
-            const url = 'https://raw.githubusercontent.com/onlinewithbeta/Tips-/main/Tips.json'; // Raw URL for JSON
-            const contentDiv = document.getElementById('content');
-            const loadingDiv = document.getElementById('loading');
-            const errorDiv = document.getElementById('error');
-
-            // Clear previous content and errors
-            contentDiv.innerHTML = '';
-            errorDiv.innerHTML = '';
-
-            // Show loading indicator
-            loadingDiv.style.display = 'block';
-
-            const xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
-            xhr.open('GET', url, true); // Initialize the request
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) { // Check if request is complete
-                    loadingDiv.style.display = 'none'; // Hide loading indicator
-                    if (xhr.status === 200) {
-                        // Successfully fetched the content
-                        const jsonData = JSON.parse(xhr.responseText); // Parse the JSON response
-                        displayTips(jsonData); // Pass the data to display function
-                    } else {
-                        // Handle error
-                        errorDiv.innerHTML = `Error fetching the data: ${xhr.status}`;
-                    }
-                }
-            };
-
-            xhr.send(); // Send the request
-
-            // Function to display the tips
-            function displayTips(data) {
-                // Assuming data is an array of tips
-                if (Array.isArray(data)) {
-                    data.forEach(tip => {
-                        const tipDiv = document.createElement('div');
-                        tipDiv.textContent = tip; // Display each tip
-                        contentDiv.appendChild(tipDiv);
-                    });
-                } else {
-                    contentDiv.innerHTML = 'No tips found or incorrect data format.';
-                }
-            }
+      // Smooth Scroll for Button
+      document.querySelector('.btn').addEventListener('click', () => {
+        window.scrollTo({
+          top: 260,
+          behavior: 'smooth' // Smooth scrolling
         });
+      });
     </script>
+  </div>
+
+  <div id="App_container" class="app-container">
+    <!---Header--->
+    <header class="app-header">
+
+      <h1 class="page_title">CGPA Calculator</h1>
+
+      <!---Theme controler--->
+      <label class="NightDayswitch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider">
+          <img id="theme_icon" src=" Img/lightmode.png" alt="Theme Icon" class="theme-icon">
+        </span>
+      </label>
+      <!---Menu bar--->
+      <img id="menuButton" class="toggle-icon" src="Img/menu1.png" alt="menu bar" />
+    </header>
+
+    <main class="app-main" id="mainPage">
+
+      <section id="GPA_Div" class="CGPA_GPA_Container">
+        <div id="GPA_interface">
+          <img class="ToHome" src=" Img/X.png" alt="Back" />
+
+          <div id="numberOfCourseContainer">
+            <b>Number Of Courses:</b>
+            <input max="2" type="number" placeholder=" 1 - 100" id="numberOfCourse" />
+          </div>
+
+          <img usemap="#map2" src="Img/adsTest.jpg" class="ads" id="GPA_Ads" />
+          <map name="map2" id="map2">
+            <area shape="rect" coords="0,0,1000,1000" href="www.zz.com" alt="Link" title="Link">
+          </map>
+        </div>
+
+
+        <div id="Calculator" class="Calculator">
+          <img id="GPA_back" class="To_GI" src=" Img/X.png" alt="Back" />
+
+          <div id="TableContainer" class="TableContainers">
+          </div>
+
+
+          <div id="checkGPASection" class="checkSection">
+            <div class="SaveResult" id="saveGPA">
+              Save
+            </div>
+            <div id="addCourse">
+              +
+            </div>
+            <div id="checkGPA" class="checker">
+              GPA
+            </div>
+            <div id="View_GPA_Result" class="viewSaved">
+              View Saved Results
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="CGPA_Div">
+        <section id="CGPA_interface">
+          <img class="ToHome" src=" Img/X.png" alt="Back" />
+
+          <div id="Level">
+            <b>Current Year</b>
+            <input max="2" type="number" placeholder=" 1 - 10" id="CurrentLevel" />
+          </div>
+          <img usemap="#map1" src="Img/adsTest.jpg" class="ads" id="CGPA_Ads" />
+
+          <map name="map1" id="map1">
+            <area shape="rect" coords="0,0,1000,1000" href="https://www.google.com" alt="Link" title="Link">
+          </map>
+        </section>
+
+
+
+        <div id="CCGPA_Container">
+          <img id="CGPA_back" class="To_CI" src=" Img/X.png" alt="Back" />
+          <section id="CGPA_Container"></section>
+        </div>
+
+
+
+
+        <div id="checkCGPASection" class="checkSection">
+          <div id="saveCGPA" class="SaveResult">
+            Save
+          </div>
+          <div id="addYear">
+            +
+          </div>
+          <div id="checkCGPA" class="checker">
+            CGPA
+          </div>
+          <div id="View_CGPA_Result" class="viewSaved">
+            View Saved Results
+          </div>
+        </div>
+      </section>
+
+      <div id="myAlertBox_Con">
+        <div id="myAlertBox">
+          <p id="myAlertMessage"></p>
+          <button id="alertOk" type="button">OK, Thanks</button>
+        </div>
+      </div>
+    </main>
+
+    <section id="tipsPage" class="AuxPage">
+      <div class="Tipscontainer">
+        <h1>Daily Tips</h1>
+        <div class="tip">
+          <p class="tip-content" id="tipContent">
+            "Use active learning strategies to enhance your study effectiveness!"
+          </p>
+          <p class="author" id="tipAuthor">
+            — Unknown
+          </p>
+        </div>
+        <div class="button-container">
+          <button class="exit-button" id="exitTips">Exit</button>
+          <button class="next-tip" id="nextTip">Next Tip</button>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="aboutPage" class="AuxPage">
+      <div class="head">
+        <div class="close_Aux">
+          X
+        </div>
+        <h2 class="Aux_Title">About</h2>
+      </div>
+      <div id="aboutContainer">
+        <img class="icon" src="Img/mainIcon.png" alt="" />
+        <h3>CGPA Calculator</h3>
+        <em>version 1.7.0</em><br /><br />
+        <b>Developed by:</b><br />
+        <span class="toMe" id="myName">Robert Believe Osiaru</span><br /><br />
+        <b>Phone : </b> <span class="toMe" id="myNumber">+2349064498317</span><br /><br />
+
+        <b>Email : </b> <span class="toMe" id="myEmail">believerobert3@gmail.com</span><br /><br />
+      </div>
+    </section>
+    
+    <section id="manualPage" class="AuxPage">
+      <div class="head">
+        <div class="close_Aux">
+          X
+        </div>
+        <h2 class="Aux_Title">Help</h2>
+      </div>
+      <div class="info">
+        <details>
+
+          <summary>
+            What is C.G.P.A.?
+          </summary>
+          <p>
+            C.G.P.A. stands for Cumulative Grade Point Average. It is a measure commonly used in educational institutions to represent the overall academic performance of a student on a scale, typically from 0 to 5, where higher numbers indicate better performance.
+          </p>
+          <p>
+            The C.G.P.A. is calculated by taking the weighted average of the grade points earned in all the courses a student has taken during a specific period (such as a semester or an academic year). Each course is assigned a certain number of credit hours, and the grade points for each course are multiplied by the corresponding credit hours to obtain the total points. Then, the total points are divided by the total credit hours taken to determine the C.G.P.A.
+          </p>
+        </details>
+
+        <details>
+
+          <summary>
+            What is G.P.A.?
+          </summary>
+          <p>
+            G.P.A. stands for Grade Point Average. It is a standard way of measuring academic achievement in many other countries. G.P.A. is used to summarize a student's academic performance over a specific period, typically on a scale from 0 to 5.0.
+          </p>
+        </details>
+
+
+        <details>
+
+          <summary>
+            How to use CGPA Calculator
+          </summary>
+          <ol>
+            <li>Click on the CGPA Calculator</li>
+            <li>Enter your current year</li>
+            <li>Tap on the semesters and enter your courses, credit units and grades</li>
+            <li>Click on the CGPA button at the bottom</li>
+            <li>Your CGPA will appear.</li>
+            <li>Goodluck</li>
+          </ol>
+        </details>
+
+        <details>
+
+          <summary>
+            How to use GPA Calculator
+          </summary>
+          <ol>
+            <li>Click on the GPA Calculator</li>
+            <li>Enter the number of courses you did.</li>
+            <li>Fill inyour courses, credit units and grades</li>
+            <li>Click on the GPA button at the bottom right</li>
+            <li>Your GPA will appear.</li>
+            <li>Goodluck</li>
+          </ol>
+        </details>
+
+      </div>
+    </section>
+
+    <div class="nav" id="sideNav">
+      <span id="tipsButton">Tips </span>
+      <span id="aboutButton"> About</span>
+      <span id="manualButton"> Help </span>
+      <span id="shareButton"> Share App</span>
+    </div>
+  </div>
+
+  <script src="Html/UI.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript" charset="utf-8">
+    //Leaving app.
+    app.EnableBackKey(false);
+    let OnBack = () => {
+      app.Exit();
+    }
+
+    //class that creates a Course object that will have properties like Course title, Credit Unit , Grade and point.
+    class COURSE {
+      constructor(C,
+        G,
+        CU) {
+        this.Course = C;
+        this.Grade = G;
+        this.Credit_Unit = CU;
+        this.Point = G * CU;
+      }
+    }
+
+    function Id(id) {
+      return document.getElementById(id);
+    };
+    //display none or block
+    function SeeOrHide(ele, visi) {
+      Id(ele).style.display = visi;
+    }
+
+    function myAlertWork(message) {
+      SeeOrHide("myAlertBox_Con", "block");
+      SeeOrHide("myAlertBox", "block");
+      Id("myAlertMessage").innerHTML = message;
+      Id("alertOk").addEventListener('click', () => {
+        SeeOrHide("myAlertBox", "none");
+        SeeOrHide("myAlertBox_Con", "none");
+      });
+
+    }
+
+    //Order the numbering
+    function resetNumbering() {
+      let SN = document.querySelectorAll('.SN');
+      for (let i = 0; i < SN.length; i++) {
+        SN[i].innerText = i + 1 + ".";
+      }
+    }
+
+    //Function to Delete
+    function DeleteR() {
+      // Function to enable delete functionality
+      document.querySelectorAll(".Results_Table").forEach((table) => {
+        table.addEventListener('click',
+          function(event) {
+            if (event.target.classList.contains('deleter')) {
+              // Get the current row element
+              let row = event.target.closest('.tableRow');
+              // Remove the row from the DOM            if (row) {
+              row.style.animation = "smaller 1.4s";
+              setTimeout(function() {
+                row.remove();
+              }, 1300);
+              setTimeout(function() {
+                resetNumbering();
+              }, 1450);
+            }
+
+          });
+      })
+
+    };
+
+    function customDropdown() {
+      let FakeGrade = [];
+      //selecte at our customDropdowns
+      let dropdowns = document.querySelectorAll('.custom-dropdown');
+
+      dropdowns.forEach((dropdown,
+        index) => {
+        //Going through the array of our selected custom-dropdown
+        let selected = dropdown.querySelector('.Grade');
+        let options = dropdown.querySelector('.options');
+        document.addEventListener('click',
+          (event) => {
+            let isClickInsideOption = dropdown.contains(event.target);
+            // Check if the click was outside
+            if (!isClickInsideOption) {
+              options.style.display = "none"; // Hide the options
+            }
+          });
+        //for the choose option
+        selected.addEventListener('click',
+          () => {
+            options.style.display = "block"; // Toggle options visibility
+          });
+
+        dropdown.querySelectorAll('.option').forEach(option => {
+          option.addEventListener('click', () => {
+            // Update displayed selected value
+            selected.textContent = option.textContent;
+
+            options.style.display = "none"; // Close the options
+            // Update the selectedValues array based on the dropdown index
+            FakeGrade[index] = Number(option.dataset.value);
+            // Update specific index
+            let color;
+            if (FakeGrade[index] > 4) {
+              color = "#80FF00";
+            } else if (FakeGrade[index] > 3) {
+              color = "#DEFF00";
+            } else if (FakeGrade[index] > 2) {
+              color = "#FFCF00";
+            } else if (FakeGrade[index] > 1) {
+              color = "#FF6D00";
+            } else {
+              color = "#FF1600";
+
+            };
+            selected.style.background = color;
+            selected.style.color = "#000";
+
+            selected.style.cssText += "border: none; border-bottom: solid 0.2rem #fff; border-right: solid 0.2rem #fff;";
+
+
+          });
+        });
+        // Close dropdown if click outside
+        window.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) options.classList.remove('show');
+        });
+      });
+    };
+    const GradeOption = `<div class="options">
+<div class="option" data-value="5">A</div>
+<div class="option" data-value="4">B</div>
+<div class="option" data-value="3">C</div>
+<div class="option" data-value="2">D</div>
+<div class="option" data-value="1">E</div>
+</div>`;
+
+
+    //What every row will contain
+    let universalRowContent = `<span class="SN">.</span>
+<input type="text" class="Course" placeholder="Course"/>
+<input type="number" class="Credit_Unit" placeholder="unit"/>
+<div class="custom-dropdown">
+<div class="Grade">Grade</div>
+<img class="deleter" src=" Img/deleterLight.png" alt="Delete Course" />
+${GradeOption}
+</div>
+`;
+
+
+    //To get our values
+    function getValues(parameter1) {
+      window[`All_${parameter1}`] = document.querySelectorAll(`.${parameter1}`);
+      window[parameter1] = Array.prototype.slice.call(window[`All_${parameter1}`]).map(e => e.value);
+    }
+
+    //selecting our elements
+    let I;
+    let addCourse = Id("addCourse");
+    let Grade = [];
+    let FakeGrade = [];
+    let EEtime = 0;
+
+    //Day and Night theme Function
+    function DayOrNigth() {
+      if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        Id("body").style.background = "#000064";
+        Id("theme_icon").src = " Img/darkmode.png";
+        document.querySelectorAll(`.deleter`).forEach((icon) => {
+          icon.src = " Img/deleterDark.png";
+        });
+      } else {
+        localStorage.setItem('theme', 'light');
+        Id("body").style.background = "#fff";
+        Id("theme_icon").src = " Img/lightmode.png";
+        document.querySelectorAll(`.deleter`).forEach((icon) => {
+          icon.src = " Img/deleterLight.png";
+        });
+      }
+    }
+
+    //Night and Day mode
+    const themeToggle = document.getElementById('themeToggle');
+
+    // Check for saved user preference for theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.checked = true;
+    }
+
+    // Event listener to change theme
+    themeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark');
+      DayOrNigth();
+    });
+    DayOrNigth();
+
+
+    //Add New Row
+    function GPAaddRow() {
+      I++;
+      // Create a new input element
+      let incomingRow = document.createElement('div');
+      incomingRow.className = 'tableRow';
+      incomingRow.id = `row${I}`;
+      incomingRow.innerHTML += universalRowContent;
+      document.getElementById('Results_Table').appendChild(incomingRow);
+      incomingRow.style.animation = "appear 1.5s";
+      customDropdown();
+      DeleteR();
+      resetNumbering();
+      DayOrNigth();
+    };
+
+    //Function to creates the table in GPA Calculator
+    function addTable() {
+      //Check number Of Course
+      let numberOfCourse = Id("numberOfCourse").value;
+      //Create Table with only headers
+      Id('TableContainer').innerHTML = `
+    <section id="Results_Table" class="Results_Table">
+    <div id="headRow" class = "headRow">
+    <div></div>
+    <div>Course</div>
+    <div>Credit Unit</div>
+    <div>Grade</div>
+    </div>
+    </section>
+    `;
+      numberOfCourse++
+      //Create the  different rows
+
+      for (I = 1; I < numberOfCourse; I++) {
+        Id('Results_Table').innerHTML += `
+        <div class = "tableRow">
+        ${universalRowContent}
+        </div>
+        `;
+      };
+      I--;
+      resetNumbering();
+      customDropdown();
+      DeleteR();
+      DayOrNigth();
+      //UX
+      if (EEtime < 1) {
+        Id("numberOfCourseContainer").style.animation = "none";
+      };
+      EEtime++;
+    }
+
+
+    //We get our result
+    function getGPA() {
+      Grade = [];
+      let COURSES = [];
+      let Total_Credit_Uint = 0;
+      let Total_Max_Point = 0;
+      let Total_Point = 0;
+      let Point = 0;
+      let Rows = document.querySelectorAll(".tableRow");
+      let num = Rows.length;
+      getValues("Course");
+      getValues("Credit_Unit");
+
+      let gradeValues;
+      let Grades = document.querySelectorAll(".Grade");
+
+      Grades.forEach((grade) => {
+        if (grade.innerText === "A") {
+          gradeValues = 5;
+        } else if (grade.innerText === "B") {
+          gradeValues = 4;
+        } else if (grade.innerText === "C") {
+          gradeValues = 3;
+        } else if (grade.innerText === "D") {
+          gradeValues = 2;
+        } else if (grade.innerText === "E") {
+          gradeValues = 1;
+        } else {
+          grade.innerText = "GRADE";
+          gradeValues = -1;
+        };
+        Grade.push(gradeValues);
+      });
+
+      let MissingInputs = [];
+      for (let i = 0; i < num; i++) {
+        if (Number(Credit_Unit[i]) < 1 || Number(Grade[i]) < 1) {
+          MissingInputs.push(i + 1);
+        }
+
+        window[`Course${i}`] = new COURSE(Course[i], Credit_Unit[i], Grade[i])
+        COURSES.push(window[`Course${i}`]);
+        Point = Number(Credit_Unit[i]) * Number(Grade[i]);
+        Total_Credit_Uint = Total_Credit_Uint + Number(Credit_Unit[i]);
+        Total_Point = Total_Point + Point;
+      };
+      if (MissingInputs.length > 0) {
+        return myAlertWork(`Please Fill in Your Courses, Credit Unit and Grade in row ${MissingInputs} !`);
+      }
+      //calculate CGPA
+      let GPA = Total_Point / Total_Credit_Uint;
+      GPA = GPA.toFixed(1);
+      //Display CGPA
+      myAlertWork(`GPA : ${GPA}`);
+      if (GPA > 4.4) {
+        myAlertWork(`GPA : ${GPA}.
+            Good Score👍🏽. Please keep it up.`);
+      };
+    }
+
+    function from_Calculator_to_GPA_interface() {
+      Id('TableContainer').innerHTML = " ";
+      Id("numberOfCourse").value = " ";
+      SeeOrHide("GPA_Ads", "block");
+      SeeOrHide("Calculator", "none")
+      SeeOrHide("GPA_interface", "grid");
+      OnBack = () => {
+        from_Calculator_to_Hone();
+      }
+    }
+
+    //Show table
+    function displayTable() {
+      addTable();
+      SeeOrHide("TableContainer", "block");
+      SeeOrHide("Calculator", "block");
+      SeeOrHide("GPA_Ads", "none");
+      SeeOrHide("GPA_interface", "none");
+      SeeOrHide("checkGPASection", "grid");
+      //Back button touch
+      OnBack = () => {
+        from_Calculator_to_GPA_interface();
+      }
+      Id("GPA_back").addEventListener('click', () => {
+        from_Calculator_to_GPA_interface();
+      });
+    }
+
+    // Get the input element
+    let numberOfCourse = Id('numberOfCourse');
+    //collecting number of cousre
+    numberOfCourse.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        if (numberOfCourse.value < 1 || numberOfCourse.value > 100) {
+          myAlertWork(` The Number of courses must be above zero (0) and below 100. <br/>
+                Please Enter the Number of courses you did!`);
+        } else {
+          displayTable();
+        }
+      };
+    });
+
+    checkGPA.addEventListener('click', () => {
+      getGPA();
+    });
+    addCourse.addEventListener('click', () => {
+      GPAaddRow();
+    });
+
+    /*CGPA Section*/
+    let semester = 3;
+    let NOC = 6;
+    let yourlevel;
+    // Find the add_Year_btn button elements
+    let add_Year_btn = Id("addYear");
+
+    //Main Creator
+    function CreateInterface() {
+      //For Year_Container
+      yourlevel++;
+      for (let y = 1; y < yourlevel; y++) {
+        Id("CGPA_Container").innerHTML += `
+
+        <div class="Year_Container" id="Y${y}">
+
+        <h1 class="Year_Title">Year ${y}</h1>
+
+        </div>
+        `;
+        //For semester
+        for (let s = 1; s < semester; s++) {
+          //Create semester Container
+          Id(`Y${y}`).innerHTML += `
+            <div class="semester_Container" id="Y${y}S${s}Container">
+
+            <div class="SemeTitle">
+            <span href="#" id="Y${y}S${s}Semester_Title" class="Semester_Title"><b href="#">Semester ${s}</b></span>
+
+            <span class="noResult">
+            🚫  No Result?...*
+            </span>
+            </div>
+
+
+            <div class="TableContainers" id="Y${y}S${s}TableContainer"></div>
+
+            </div>`;
+
+          //Create Results Table
+          Id(`Y${y}S${s}TableContainer`).innerHTML = `
+            <section class="Results_Table" id="Y${y}S${s}Results_Table">
+            <h4>Year${y}  Semester ${s}</h4>
+            <div id="Y${y}S${s}headRow" class = "headRow">
+            <div>S/N</div>
+            <div>Course</div>
+            <div>Credit Unit</div>
+            <div>Grade</div>
+            </div>
+            </section>
+            <button class="Add_Row">+</button>
+            <button class="Done">✓</button>`;
+          //Create Results Table
+          for (let row = 1; row < NOC; row++) {
+            Id(`Y${y}S${s}Results_Table`).innerHTML += `<div class="tableRow">${universalRowContent}</div>`;
+          }
+        }
+      };
+      DayOrNigth();
+      resetNumbering();
+      showTable();
+      customDropdown();
+      DeleteR();
+      RemoveSemester();
+      doneee();
+      CGPAaddRow();
+    }
+    //For the Semester_Title.
+    function showTable() {
+      //selecte at our customDropdowns
+      let dropdowns = document.querySelectorAll('.semester_Container');
+      dropdowns.forEach((dropdown,
+        index) => {
+        //Going through the array of our selected custom-dropdown
+        let selected = dropdown.querySelector('.Semester_Title');
+        let options = dropdown.querySelector('.TableContainers');
+        document.addEventListener('click',
+          (event) => {
+            let isClickInsideOption = dropdown.contains(event.target);
+            // Check if the click was outside
+            if (!isClickInsideOption) {
+              options.style.display = "none"; // Hide the options
+            }
+          });
+        //for the choose option
+        selected.addEventListener('click',
+          () => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth' // Smooth scrolling
+            });
+            //slow down
+            setTimeout(function() {
+              options.style.display = "block"; // Toggle options visibility
+            }, 50);
+          });
+        // Close dropdown if click outside
+        window.addEventListener('click',
+          (e) => {
+            if (!dropdown.contains(e.target)) options.classList.remove('show');
+          });
+      });
+    };
+
+    //Remove Semester
+    function RemoveSemester() {
+      document.querySelectorAll(".Year_Container").forEach((semester_Container) => {
+        semester_Container.addEventListener('click',
+          function(event) {
+            if (event.target.classList.contains('noResult')) {
+              // Get the current row element
+              let div = event.target.closest('.semester_Container');
+              // Remove the row from the DOM            if (row) {
+              div.style.animation = "smaller 1.4s";
+              setTimeout(function() {
+                div.remove();
+              }, 1300);
+              setTimeout(function() {
+                resetNumbering();
+              }, 1450);
+            }
+
+          });
+      })
+
+    };
+
+    //Get CGPA
+    function checkCGPA() {
+      let All_Credit_Unit = [];
+      let All_Grade = [];
+      let All_Point = [];
+      let Grade_Value = 0;
+      let Credit_Unit_Value = 0;
+      let Total_Credit_Unit = 0;
+      let Total_Point = 0;
+
+      let Credit_Units = document.querySelectorAll(".Credit_Unit");
+      Credit_Units.forEach((Credit_Unit) => {
+        Credit_Unit_Value = Number(Credit_Unit.value);
+        All_Credit_Unit.push(Credit_Unit_Value);
+      });
+
+      let Grades = document.querySelectorAll(".Grade");
+      Grades.forEach((Grade) => {
+        if (Grade.innerText === "A") {
+          Grade_Value = 5;
+        } else if (Grade.innerText === "B") {
+          Grade_Value = 4;
+        } else if (Grade.innerText === "C") {
+          Grade_Value = 3;
+        } else if (Grade.innerText === "D") {
+          Grade_Value = 2;
+        } else if (Grade.innerText === "E") {
+          Grade_Value = 1;
+        } else {
+          Grade_Value = 0;
+        };
+        All_Grade.push(Grade_Value);
+      });
+      let MissingInputs = [];
+      for (let p = 0; p < All_Grade.length; p++) {
+        All_Point.push(All_Grade[p] * All_Credit_Unit[p]);
+
+        Total_Point += All_Point[p];
+        Total_Credit_Unit += All_Credit_Unit[p];
+
+        if (All_Point[p] < 1) {
+          MissingInputs.push(p + 1)
+        }
+      };
+      if (MissingInputs.length > 0) {
+        return myAlertWork(`Missing Inputs in row ${MissingInputs}!`);
+      }
+      let CGPA = Total_Point / Total_Credit_Unit;
+      CGPA = CGPA.toFixed(1);
+      myAlertWork(`Your CGPA is ${CGPA}`);
+    };
+    Id("checkCGPA").addEventListener("click", () => {
+      checkCGPA();
+    });
+
+    function CGPAaddRow() {
+      // Find all add-row-button elements
+      const addRowButtons = document.querySelectorAll(".Add_Row");
+      // Loop through each button
+      addRowButtons.forEach(function(button) {
+        let addingRowFun = () => {
+          // Find the closest div.table element to the clicked button
+          const tableDiv = button.closest(".TableContainers");
+
+          // Find the rows container within the tableDiv
+          const rowsContainer = tableDiv.querySelector(".Results_Table");
+
+          // Create a new row element
+          const newRow = document.createElement("div");
+          newRow.innerHTML = universalRowContent;
+          newRow.classList.add("tableRow");
+          // Append the new row to the rows container
+          rowsContainer.appendChild(newRow);
+          DayOrNigth();
+          resetNumbering();
+          customDropdown();
+        };
+        // Check if the button has the custom attribute indicating an event listener
+        if (button.dataset.hasListener) {
+          // If it has, remove the existing listener
+          button.removeEventListener('click', addingRowFun);
+          // Remove the custom attribute
+          delete button.dataset.hasListener;
+          console.log(`Removed listener`);
+          button.dataset.hasListener = false;
+        } else {
+          // Add event listener for button click
+          button.addEventListener("click", addingRowFun);
+          button.dataset.hasListener = true;
+        }
+        if (button.dataset.hasListener === false) {
+          console.log(false);
+        }
+
+      });
+    }
+
+    function addYear() {
+      // Add event listener for add_Year_btn click
+      add_Year_btn.addEventListener("click",
+        () => {
+          // Create a new year element
+          const newYear = document.createElement("div");
+          let y = document.querySelectorAll(".Year_Container").length + 1;
+          console.log(y);
+          newYear.classList.add("Year_Container");
+          newYear.id = `Y${y}`;
+          Id("CGPA_Container").appendChild(newYear);
+          Id(`Y${y}`).innerHTML = `        <h1 class="Year_Title">Year ${y}</h1>`;
+          //For semester
+          for (let s = 1; s < semester; s++) {
+            //Create semester Container
+            newYear.innerHTML += `
+                <div class="semester_Container" id="Y${y}S${s}Container">
+
+                <div class="SemeTitle">
+                <span id="Y${y}S${s}Semester_Title" class="Semester_Title"><b>Semester ${s}</b></span>
+                <span class="noResult">
+                🚫  No Result?...*
+                </span>
+                </div>
+
+
+                <div class="TableContainers" id="Y${y}S${s}TableContainer"></div>
+
+                </div>`;
+
+            //Create Results Table
+            Id(`Y${y}S${s}TableContainer`).innerHTML = `
+                <section class="Results_Table" id="Y${y}S${s}Results_Table">
+                <h4>Year${y}  Semester ${s}</h4>
+                <div id="Y${y}S${s}headRow" class = "headRow">
+                <div>S/N</div>
+                <div>Course</div>
+                <div>Credit Unit</div>
+                <div>Grade</div>
+                </div>
+                </section>            <button class="Add_Row">+</button>
+                <button class="Done">✓</button>
+                `;
+            //Create Results Table
+            for (let row = 1; row < NOC; row++) {
+              Id(`Y${y}S${s}Results_Table`).innerHTML += `<div class="tableRow">${universalRowContent}</div>`;
+            }
+          };
+          CGPAaddRow();
+          DayOrNigth();
+          resetNumbering();
+          showTable();
+          customDropdown();
+          DeleteR();
+          RemoveSemester();
+          doneee();
+
+        });
+    }
+
+    function doneee() {
+      document.querySelectorAll('.Done').forEach((D) => {
+        D.addEventListener('click', () => {
+          document.querySelectorAll('.TableContainers').forEach((Table) => {
+            Table.style.display = 'none';
+          });
+        });
+      });
+    }
+    let T = 1;
+    let Current_Level = Id('CurrentLevel');
+    //collecting number of cousre
+    Current_Level.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        if (CurrentLevel.value < 1 || CurrentLevel.value > 10) {
+          myAlertWork(` The levels have you done must be above zero (0) and below 10. <br/>
+                Please Enter the Number of courses you did!`);
+        } else {
+          yourlevel = Current_Level.value;
+          CreateInterface();
+          SeeOrHide("CGPA_Ads", "none");
+          SeeOrHide("CGPA_interface", "none");
+          SeeOrHide("CGPA_Container", "block");
+          SeeOrHide("CCGPA_Container", "block");
+          SeeOrHide("checkCGPASection", "grid");
+          showTable();
+          if (T < 2) {
+            addYear();
+            T++;
+          }
+          OnBack = () => {
+            from_Calculator_to_CGPA_interface();
+          }
+        }
+      };
+    });
+
+    function from_Calculator_to_CGPA_interface() {
+      Id("CGPA_Container").innerHTML = " ";
+      Id("CurrentLevel").value = " ";
+      SeeOrHide("checkCGPASection",
+        "none");
+      SeeOrHide("CCGPA_Container",
+        "none");
+      SeeOrHide("CGPA_interface",
+        "grid");
+      SeeOrHide("CGPA_Ads",
+        "block");
+      OnBack = () => {
+        from_Calculator_to_Hone();
+      }
+
+    }
+
+    function from_Calculator_to_Hone() {
+      SeeOrHide("GPA_Div",
+        "none");
+      SeeOrHide("CGPA_Div",
+        "none");
+      SeeOrHide("App_container",
+        "none");
+      SeeOrHide("startPage",
+        "block");
+      //Can Exit App.
+      OnBack = () => {
+        app.Exit();
+      }
+
+    }
+    //The back to home which is startPage
+    document.querySelectorAll('.ToHome').forEach((back) => {
+      back.addEventListener('click', () => {
+        from_Calculator_to_Hone();
+      })
+    })
+
+    //Back to CGPA interface
+    Id("CGPA_back").addEventListener('click', () => {
+      from_Calculator_to_CGPA_interface();
+    });
+
+
+    //Save CGPA
+    Id("saveCGPA").addEventListener('click', () => {
+      /* Create empty arrays to store all the courses, credit unit and grades values*/
+      let Course_Array = [];
+      let Credit_Array = [];
+      let Grade_Array = [];
+
+      /*Select all the courses, credit units and grade input elements*/
+      let All_Courses = document.querySelectorAll(".Course");
+      let All_Credit_Units = document.querySelectorAll(".Credit_Unit");
+      let All_Grades = document.querySelectorAll(".Grade");
+
+      /*Push the values into there individual  array*/
+      for (let r = 0; r < All_Courses.length; r++) {
+        Course_Array.push(All_Courses[r].value);
+        Credit_Array.push(All_Credit_Units[r].value);
+        Grade_Array.push(All_Grades[r].innerText);
+      }
+
+      /*Create a Result obj*/
+      let CGPA_ResultObj = {
+        Co: Course_Array,
+        Cr: Credit_Array,
+        Gr: Grade_Array,
+        Form: Id("CGPA_Container").innerHTML
+      }
+      //Create the Result File
+      localStorage.setItem("CGPA_R", JSON.stringify(CGPA_ResultObj));
+      myAlertWork("Results Saved ");
+    });
+
+    //To View_CGPA_Result
+    Id('View_CGPA_Result').addEventListener('click', () => {
+      let CGPA_ResultObj = JSON.parse(localStorage.getItem("CGPA_R"));
+
+      if (CGPA_ResultObj) {
+        Id("CGPA_Container").innerHTML = CGPA_ResultObj.Form;
+
+        let Co_dis = document.querySelectorAll(".Course");
+        let Cr_dis = document.querySelectorAll(".Credit_Unit");
+        let Gr_dis = document.querySelectorAll(".Grade");
+
+        for (let r = 0; r < Cr_dis.length; r++) {
+          Co_dis[r].value = CGPA_ResultObj.Co[r];
+          Cr_dis[r].value = CGPA_ResultObj.Cr[r];
+          Gr_dis[r].innerText = CGPA_ResultObj.Gr[r];
+        }
+        DayOrNigth();
+        resetNumbering();
+        showTable();
+        customDropdown();
+        DeleteR();
+        RemoveSemester();
+        doneee();
+        CGPAaddRow();
+
+        // Find all add-row-button elements
+        const addRowButtons = document.querySelectorAll(".Add_Row");
+        // Loop through each button
+        addRowButtons.forEach(function(button) {
+          let addingRowFun = () => {
+            // Find the closest div.table element to the clicked button
+            const tableDiv = button.closest(".TableContainers");
+
+            // Find the rows container within the tableDiv
+            const rowsContainer = tableDiv.querySelector(".Results_Table");
+
+            // Create a new row element
+            const newRow = document.createElement("div");
+            newRow.innerHTML = universalRowContent;
+            newRow.classList.add("tableRow");
+            // Append the new row to the rows container
+            rowsContainer.appendChild(newRow);
+            DayOrNigth();
+            resetNumbering();
+            customDropdown();
+          };
+          button.addEventListener("click", addingRowFun);
+          button.dataset.hasListener = true;
+        });
+      } else {
+        myAlertWork("No CGPA Result saved ");
+      }
+    });
+
+    //NAVIGATION
+    const CGPA_Button = Id("CGPA_Button");
+    const GPA_Button = Id("GPA_Button");
+
+    CGPA_Button.addEventListener("click", () => {
+      SeeOrHide('startPage', 'none');
+      SeeOrHide('App_container', 'block');
+      SeeOrHide('CGPA_Div', 'block');
+      //Take us to home screen
+      OnBack = () => {
+        from_Calculator_to_Hone();
+      }
+    });
+
+    GPA_Button.addEventListener("click", () => {
+      SeeOrHide('startPage', 'none');
+
+      SeeOrHide('App_container', 'block');
+      SeeOrHide('GPA_Div', 'block');
+      //Take us to home screen
+      OnBack = () => {
+        from_Calculator_to_Hone();
+      }
+    });
+
+
+    //Save GPA
+    Id("saveGPA").addEventListener('click', () => {
+      /* Create empty arrays to store all the courses, credit unit and grades values*/
+      let Course_Array = [];
+      let Credit_Array = [];
+      let Grade_Array = [];
+
+      /*Select all the courses, credit units and grade input elements*/
+      let All_Courses = document.querySelectorAll(".Course");
+      let All_Credit_Unis = document.querySelectorAll(".Credit_Unit");
+      let All_Grades = document.querySelectorAll(".Grade");
+
+      /*Push the values into there individual  array*/
+      for (let r = 0; r < All_Courses.length; r++) {
+        Course_Array.push(All_Courses[r].value);
+        Credit_Array.push(All_Credit_Unis[r].value);
+        Grade_Array.push(All_Grades[r].innerText);
+      }
+
+      /*Create a Result obj*/
+      let GPA_ResultObj = {
+        Co: Course_Array,
+        Cr: Credit_Array,
+        Gr: Grade_Array,
+        Form: Id("Results_Table").innerHTML
+      }
+
+      /*  Create the Result File*/
+      localStorage.setItem("GPA_R", JSON.stringify(GPA_ResultObj));
+      myAlertWork("GPA Results Saved ");
+    });
+
+
+    //To View_GPA_Result
+    Id('View_GPA_Result').addEventListener('click', () => {
+      let GPA_ResultObj = JSON.parse(localStorage.getItem("GPA_R"));
+
+      if (GPA_ResultObj) {
+        Id("Results_Table").innerHTML = GPA_ResultObj.Form;
+
+        let Co_dis = document.querySelectorAll(".Course");
+        let Cr_dis = document.querySelectorAll(".Credit_Unit");
+        let Gr_dis = document.querySelectorAll(".Grade");
+
+        for (let r = 0; r < Cr_dis.length; r++) {
+          Co_dis[r].value = GPA_ResultObj.Co[r];
+          Cr_dis[r].value = GPA_ResultObj.Cr[r];
+          Gr_dis[r].innerText = GPA_ResultObj.Gr[r];
+        }
+        resetNumbering();
+        customDropdown();
+        DeleteR();
+        DayOrNigth();
+      } else {
+        myAlertWork("No GPA result saved");
+      }
+    });
+
+
+    //shareButton
+    Id("shareButton").addEventListener('click', () => {
+      app.SendText("I absolutely love using this app for calculating my CGPA and GPA! It’s incredibly fast, intuitive, and makes the entire process effortless. If you want an easy way to keep track of your academic performance, I highly recommend you give it a try: [https://link]", "Share App", "Choose an app");
+    });
+
+    //Ads in buult
+    let In_Built_Ads = `
+        Ads_Img_S  Img/adsTest.jpg  Ads_Img_E
+        Ads_Url_S   " https://2u.wordpress.com"  Ads_Url_E
+        Ads_Alt_S   Ads 2  Ads_Alt_E
+        Ads_Owner_S   Owner2  Ads_Owner_E
+
+
+        Ads_Img_S  Img/adsTest.jpg Ads_Img_E
+        Ads_Url_S  "https://3u.wordpress.com"  Ads_Url_E
+        Ads_Alt_S  Ads3 Ads_Alt_E
+        Ads_Owner_S  Owner3 Ads_Owner_E
+        `;
+
+    let raw_Ads = "Nothing ";
+
+
+    if (navigator.onLine) {
+      requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+    } else {
+      window.addEventListener('online', () => {
+        requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+      });
+    }
+
+    //requestAds
+    function requestAds(address) {
+      app.HttpRequest("GET", address, null, null, handleReply);
+
+      function handleReply(error, reply) {
+        if (error) {
+          alert('Network Error  :   ' + reply);
+          app.Exit();
+        } else {
+
+          // Extract data between the specified markers
+          let rawData = reply.slice(reply.indexOf("Start_Of_Code") + 13, reply.indexOf("End_Of_Code"));
+
+          // Clean up the raw data
+          raw_Ads = rawData.replace(/","/g, '');
+          raw_Ads = raw_Ads.replace(/\\/g, '');
+          arrayAds(raw_Ads);
+        }
+      }
+    }
+
+    //get Random Item
+    function getRandomItem(arr) {
+      let randomIndex = Math.floor(Math.random() * arr.length);
+      return arr[randomIndex];
+    }
+
+    //Arrange the Ads and store them locally
+    function arrayAds(raw_text) {
+      /*Create and array of Image Url*/
+      //Use regex to find everything between "Ads_Img_S" and "Ads_Img_E"
+      let processing_Img_S = raw_text.match(/Ads_Img_S (.*?) Ads_Img_E/g);
+      //Initiating the variable outside the if block
+      let Imgs;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_Img_S) {
+        // Capitalize to use the matches properly and trim spaces
+        Imgs = processing_Img_S.map(processing_Img_S => processing_Img_S.replace(/Ads_Img_S | Ads_Img_E/g, '').trim());
+      }
+
+      /*Create and array of Owner' Url*/
+      //Use regex to find everything between "Ads_Url_S" and "Ads_Url_E"
+      let processing_Url_S = raw_text.match(/Ads_Url_S (.*?) Ads_Url_E/g);
+      let Urls;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_Url_S) {
+        // Capitalize to use the matches properly and trim spaces
+        Urls = processing_Url_S.map(processing_Url_S => processing_Url_S.replace(/Ads_Url_S | Ads_Url_E/g, '').trim());
+      }
+
+      /*Create and array of Ads alt*/
+      //Use regex to find everything between "Ads_Alt_S" and "Ads_Alt_E"
+      let processing_Arl_S = raw_text.match(/Ads_Alt_S (.*?) Ads_Alt_E/g);
+      let Alts;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_Arl_S) {
+        // Capitalize to use the matches properly and trim spaces
+        Alts = processing_Arl_S.map(processing_Arl_S => processing_Arl_S.replace(/Ads_Alt_S | Ads_Alt_E/g, '').trim());
+      }
+
+
+      /*Create and array of Ads Owner name*/
+      //Use regex to find everything between "Ads_Owner_S" and "Ads_Owner_E"
+      let processing_Owner_S = raw_text.match(/Ads_Owner_S (.*?) Ads_Owner_E/g);
+      let Owners;
+      // Extract the matched results and remove unnecessary parts
+      if (processing_Owner_S) {
+        // Capitalize to use the matches properly and trim spaces
+        Owners = processing_Owner_S.map(processing_Owner_S => processing_Owner_S.replace(/Ads_Owner_S | Ads_Owner_E/g, '').trim());
+      }
+
+
+      //Create our tips array
+      let adsTips = []
+      for (let i = 0; i < Owners.length; i++) {
+        adsTips.push({
+          Img: Imgs[i],
+          Url: Urls[i],
+          Alt: Alts[i],
+          Owner: Owners[i]
+        });
+      }
+
+      //Store it locally
+      localStorage.setItem('NewAds', JSON.stringify(adsTips));
+    }
+
+    //function to display Ads
+    function displayAds() {
+      //Assign the localStorage tips to a variable
+      let Ads = localStorage.getItem("NewAds");
+
+      if (Ads) {
+        Ads = JSON.parse(Ads);
+        //get a Random tips
+        let current_Ad = getRandomItem(Ads);
+        //displayAds
+        let GPA_Ads = Id('GPA_Ads');
+        let CGPA_Ads = Id('CGPA_Ads');
+
+        CGPA_Ads.src = current_Ad.Img;
+        CGPA_Ads.alt = current_Ad.Alt;
+
+        console.log(current_Ad.Img, current_Ad.Alt);
+        GPA_Ads.src = current_Ad.Img;
+        GPA_Ads.alt = current_Ad.Alt;
+
+      } else {
+        //No stored
+        arrayAds(In_Built_Ads);
+        displayAds();
+      }
+    }
+    displayAds();
+    setInterval(displayAds, 10000);
+
+  </script>
 </body>
+
 </html>

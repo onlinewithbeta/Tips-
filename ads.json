@@ -2,19 +2,19 @@ Start_Of_Code
 
 
 Ads_Img_S  https://drive.google.com/thumbnail?id=1CO9a-zlB97YAQOuAneP1Wq1APvdkiJAI Ads_Img_E
-        Ads_Url_S  HttpRequest Ads_Url_E
+        Ads_Url_S  https://1.wordpress.com  Ads_Url_E
         Ads_Alt_S  The first ads alt Ads_Alt_E
         Ads_Owner_S  Owner1 Ads_Owner_E
 
 
         Ads_Img_S  https://drive.google.com/thumbnail?id=164ufS_71MJ35UfY8Tz37YEGkDyKtbkdG  Ads_Img_E
-        Ads_Url_S    https://uuu.wordpress.com  Ads_Url_E
+        Ads_Url_S    https://2.wordpress.com  Ads_Url_E
         Ads_Alt_S   Ads 2  Ads_Alt_E
         Ads_Owner_S   Owner2  Ads_Owner_E
 
 
         Ads_Img_S  https://drive.google.com/thumbnail?id=1HA_fKacUEpjUXPJGk2ud7lHT3f4JVJ9O Ads_Img_E
-        Ads_Url_S  HttpRequest Ads_Url_E
+        Ads_Url_S  https://3.wordpress.com  Ads_Url_E
         Ads_Alt_S  Ads3 alt Ads_Alt_E
         Ads_Owner_S  Owner3 Ads_Owner_E
   
