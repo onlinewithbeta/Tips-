@@ -111,10 +111,7 @@
             <input max="2" type="number" placeholder=" 1 - 100" id="numberOfCourse" />
           </div>
 
-          <img usemap="#map2" src="Img/adsTest.jpg" class="ads" id="GPA_Ads" />
-          <map name="map2" id="map2">
-            <area shape="rect" coords="0,0,1000,1000" href="www.zz.com" alt="Link" title="Link">
-          </map>
+          <img src="Img/adsTest.jpg" class="ads" id="GPA_Ads" />
         </div>
 
 
@@ -151,11 +148,7 @@
             <b>Current Year</b>
             <input max="2" type="number" placeholder=" 1 - 10" id="CurrentLevel" />
           </div>
-          <img usemap="#map1" src="Img/adsTest.jpg" class="ads" id="CGPA_Ads" />
-
-          <map name="map1" id="map1">
-            <area shape="rect" coords="0,0,1000,1000" href="https://www.google.com" alt="Link" title="Link">
-          </map>
+          <img src="Img/adsTest.jpg" class="ads" id="CGPA_Ads" />
         </section>
 
 
@@ -229,7 +222,7 @@
         <b>Email : </b> <span class="toMe" id="myEmail">believerobert3@gmail.com</span><br /><br />
       </div>
     </section>
-    
+
     <section id="manualPage" class="AuxPage">
       <div class="head">
         <div class="close_Aux">
@@ -1227,10 +1220,18 @@ ${GradeOption}
 
 
     if (navigator.onLine) {
-      requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+      try {
+        requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+      } catch (e) {
+        console.log(e)
+      }
     } else {
       window.addEventListener('online', () => {
-        requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+        try {
+          requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
+        } catch (e) {
+          console.log(e)
+        }
       });
     }
 
@@ -1336,10 +1337,18 @@ ${GradeOption}
 
         CGPA_Ads.src = current_Ad.Img;
         CGPA_Ads.alt = current_Ad.Alt;
+        // Set the onclick property
+        CGPA_Ads.onclick = function() {
+          app.OpenUrl(current_Ad.Url);
+        };
 
         console.log(current_Ad.Img, current_Ad.Alt);
         GPA_Ads.src = current_Ad.Img;
         GPA_Ads.alt = current_Ad.Alt;
+        // Set the onclick property
+        GPA_Ads.onclick = function() {
+          app.OpenUrl(current_Ad.Url);
+        };
 
       } else {
         //No stored
@@ -1349,7 +1358,6 @@ ${GradeOption}
     }
     displayAds();
     setInterval(displayAds, 10000);
-
   </script>
 </body>
 
