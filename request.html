@@ -1,5 +1,4 @@
 <html>
-
 <head>
   <title>GPA Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -288,15 +287,32 @@
       </div>
     </section>
 
-    <div class="nav" id="sideNav">
-      <span id="tipsButton">Tips </span>
-      <span id="aboutButton"> About</span>
-      <span id="manualButton"> Help </span>
-      <span id="shareButton"> Share App</span>
+        <div class="nav" id="sideNav">
+            <span id="tipsButton">
+                <img class="navIcon" src="Img/icons8-bulb-96.png" alt="" />
+                <span>Daily Tips </span>
+            </span>
+
+            <span id="aboutButton">
+                <img class="navIcon" src="Img/aboutus.png" alt="" />
+                <span>About</span>
+
+            </span>
+            <span id="manualButton">
+                <img class="navIcon" src="Img/help.png" alt="" />
+                <span>Help</span>
+
+            </span>
+            <span id="shareButton">
+                <img class="navIcon" src="Img/share.png" alt="" />
+                <span>Share App</span>
+            </span>
+        </div>
     </div>
   </div>
 
   <script src="Html/UI.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Html/tips.js" type="text/javascript" charset="utf-8"></script>
 
   <script type="text/javascript" charset="utf-8">
     //Leaving app.
@@ -354,7 +370,7 @@
               // Get the current row element
               let row = event.target.closest('.tableRow');
               // Remove the row from the DOM            if (row) {
-              row.style.animation = "smaller 1.4s";
+              row.style.animation= "smaller 1.4s";
               setTimeout(function() {
                 row.remove();
               }, 1300);
@@ -438,7 +454,8 @@
 
 
     //What every row will contain
-    let universalRowContent = `<span class="SN">.</span>
+    let universalRowContent = `
+<span class="SN">.</span>
 <input type="text" class="Course" placeholder="Course"/>
 <input type="number" class="Credit_Unit" placeholder="unit"/>
 <div class="custom-dropdown">
@@ -1203,7 +1220,6 @@ ${GradeOption}
         Ads_Alt_S   Ads 2  Ads_Alt_E
         Ads_Owner_S   Owner2  Ads_Owner_E
 
-
         Ads_Img_S  Img/adsTest.jpg Ads_Img_E
         Ads_Url_S  "https://3u.wordpress.com"  Ads_Url_E
         Ads_Alt_S  Ads3 Ads_Alt_E
@@ -1217,7 +1233,7 @@ ${GradeOption}
       try {
         requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
       } catch (e) {
-          console.log("Thata err");
+        console.log("Thata err");
         console.log(e);
       }
     } else {
@@ -1236,7 +1252,7 @@ ${GradeOption}
 
       function handleReply(error, reply) {
         if (error) {
-          alert('Network Error  :   ' + reply);
+          app.ShowPopup('Network Error  :   ' + reply);
         } else {
 
           // Extract data between the specified markers
@@ -1288,8 +1304,6 @@ ${GradeOption}
         // Capitalize to use the matches properly and trim spaces
         Alts = processing_Arl_S.map(processing_Arl_S => processing_Arl_S.replace(/Ads_Alt_S | Ads_Alt_E/g, '').trim());
       }
-
-
       /*Create and array of Ads Owner name*/
       //Use regex to find everything between "Ads_Owner_S" and "Ads_Owner_E"
       let processing_Owner_S = raw_text.match(/Ads_Owner_S (.*?) Ads_Owner_E/g);
@@ -1299,8 +1313,6 @@ ${GradeOption}
         // Capitalize to use the matches properly and trim spaces
         Owners = processing_Owner_S.map(processing_Owner_S => processing_Owner_S.replace(/Ads_Owner_S | Ads_Owner_E/g, '').trim());
       }
-
-
       //Create our tips array
       let adsTips = []
       for (let i = 0; i < Owners.length; i++) {
@@ -1324,26 +1336,29 @@ ${GradeOption}
       if (Ads) {
         Ads = JSON.parse(Ads);
         //get a Random tips
-        let current_Ad = getRandomItem(Ads);
+        let current_Ad1 = getRandomItem(Ads)
+        let current_Ad2 = getRandomItem(Ads);
         //displayAds
         let GPA_Ads = Id('GPA_Ads');
         let CGPA_Ads = Id('CGPA_Ads');
 
-        CGPA_Ads.src = current_Ad.Img;
-        CGPA_Ads.alt = current_Ad.Alt;
+        CGPA_Ads.src = current_Ad1.Img;
+        CGPA_Ads.alt = current_Ad1.Alt;
         // Set the onclick property
         CGPA_Ads.onclick = function() {
-          app.OpenUrl(current_Ad.Url);
+          app.OpenUrl(current_Ad1.Url);
         };
-
-        console.log(current_Ad.Img, current_Ad.Alt);
-        GPA_Ads.src = current_Ad.Img;
-        GPA_Ads.alt = current_Ad.Alt;
+        CGPA_Ads.animation=" ";
+        CGPA_Ads.animation="slideTo 1s";
+        //Gpa ads are different.
+        GPA_Ads.src = current_Ad2.Img;
+        GPA_Ads.alt = current_Ad2.Alt;
         // Set the onclick property
         GPA_Ads.onclick = function() {
-          app.OpenUrl(current_Ad.Url);
+          app.OpenUrl(current_Ad2.Url);
         };
-
+        GPA_Ads.animation=" ";
+        GPA_Ads.animation="slideTo 1s";
       } else {
         //No stored
         arrayAds(In_Built_Ads);
@@ -1354,5 +1369,4 @@ ${GradeOption}
     setInterval(displayAds, 10000);
   </script>
 </body>
-
 </html>
