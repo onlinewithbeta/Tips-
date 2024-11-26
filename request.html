@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <title>GPA Calculator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,16 +116,14 @@
 
 
         <div id="Calculator" class="Calculator">
-          <img id="GPA_back" class="To_GI" src=" Img/X.png" alt="Back" />
+          <img id="GPA_back" class="To_GI" src="Img/X.png" alt="Back" />
 
           <div id="TableContainer" class="TableContainers">
           </div>
 
 
           <div id="checkGPASection" class="checkSection">
-            <div class="SaveResult" id="saveGPA">
-              Save
-            </div>
+            <img src="Img/saveR.png" class="SaveResult" id="saveGPA" />
             <div id="addCourse">
               +
             </div>
@@ -161,9 +160,7 @@
 
 
         <div id="checkCGPASection" class="checkSection">
-          <div id="saveCGPA" class="SaveResult">
-            Save
-          </div>
+          <img src="Img/saveR.png" id="saveCGPA" class="SaveResult" />
           <div id="addYear">
             +
           </div>
@@ -287,32 +284,32 @@
       </div>
     </section>
 
-        <div class="nav" id="sideNav">
-            <span id="tipsButton">
-                <img class="navIcon" src="Img/icons8-bulb-96.png" alt="" />
-                <span>Daily Tips </span>
-            </span>
+    <div class="nav" id="sideNav">
+      <span id="tipsButton">
+        <img class="navIcon" src="Img/icons8-bulb-96.png" alt="" />
+        <span>Daily Tips </span>
+      </span>
 
-            <span id="aboutButton">
-                <img class="navIcon" src="Img/aboutus.png" alt="" />
-                <span>About</span>
+      <span id="aboutButton">
+        <img class="navIcon" src="Img/aboutus.png" alt="" />
+        <span>About</span>
 
-            </span>
-            <span id="manualButton">
-                <img class="navIcon" src="Img/help.png" alt="" />
-                <span>Help</span>
+      </span>
+      <span id="manualButton">
+        <img class="navIcon" src="Img/help.png" alt="" />
+        <span>Help</span>
 
-            </span>
-            <span id="shareButton">
-                <img class="navIcon" src="Img/share.png" alt="" />
-                <span>Share App</span>
-            </span>
-        </div>
+      </span>
+      <span id="shareButton">
+        <img class="navIcon" src="Img/share.png" alt="" />
+        <span>Share App</span>
+      </span>
     </div>
+  </div>
   </div>
 
   <script src="Html/UI.js" type="text/javascript" charset="utf-8"></script>
-    <script src="Html/tips.js" type="text/javascript" charset="utf-8"></script>
+  <script src="Html/tips.js" type="text/javascript" charset="utf-8"></script>
 
   <script type="text/javascript" charset="utf-8">
     //Leaving app.
@@ -370,7 +367,7 @@
               // Get the current row element
               let row = event.target.closest('.tableRow');
               // Remove the row from the DOM            if (row) {
-              row.style.animation= "smaller 1.4s";
+              row.style.animation = "smaller 1.4s";
               setTimeout(function() {
                 row.remove();
               }, 1300);
@@ -1262,6 +1259,16 @@ ${GradeOption}
           raw_Ads = rawData.replace(/","/g, '');
           raw_Ads = raw_Ads.replace(/\\/g, '');
           arrayAds(raw_Ads);
+
+//Version control
+          let latestVersion = raw_Ads.slice(reply.indexOf("Start_Of_latestVersion") + 22, raw_Ads.indexOf("End_Of_latestVersion"));
+          let link = raw_Ads.slice(reply.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
+console.log(latestVersion);
+console.log(link);
+          //Validate
+          if (1 < latestVersion) {
+            myAlertWork(`Please update the app ${link}.`);
+          }
         }
       }
     }
@@ -1348,8 +1355,8 @@ ${GradeOption}
         CGPA_Ads.onclick = function() {
           app.OpenUrl(current_Ad1.Url);
         };
-        CGPA_Ads.animation=" ";
-        CGPA_Ads.animation="slideTo 1s";
+        CGPA_Ads.animation = " ";
+        CGPA_Ads.animation = "slideTo 1s";
         //Gpa ads are different.
         GPA_Ads.src = current_Ad2.Img;
         GPA_Ads.alt = current_Ad2.Alt;
@@ -1357,8 +1364,8 @@ ${GradeOption}
         GPA_Ads.onclick = function() {
           app.OpenUrl(current_Ad2.Url);
         };
-        GPA_Ads.animation=" ";
-        GPA_Ads.animation="slideTo 1s";
+        GPA_Ads.animation = " ";
+        GPA_Ads.animation = "slideTo 1s";
       } else {
         //No stored
         arrayAds(In_Built_Ads);
@@ -1369,4 +1376,5 @@ ${GradeOption}
     setInterval(displayAds, 10000);
   </script>
 </body>
+
 </html>
