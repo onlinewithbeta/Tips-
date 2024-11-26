@@ -1249,9 +1249,10 @@ ${GradeOption}
 
       function handleReply(error, reply) {
         if (error) {
+          console.log('Fetching in failed...')
           app.ShowPopup('Network Error  :   ' + reply);
         } else {
-
+          console.log('Fetching in progress...')
           // Extract data between the specified markers
           let rawData = reply.slice(reply.indexOf("Start_Of_Code") + 13, reply.indexOf("End_Of_Code"));
 
@@ -1261,12 +1262,13 @@ ${GradeOption}
           arrayAds(raw_Ads);
 
           //Version control
-          let latestVersion = raw_Ads.slice(reply.indexOf("Start_Of_latestVersion") + 22, raw_Ads.indexOf("End_Of_latestVersion"));
-          let link = raw_Ads.slice(reply.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
+          let latestVersion = raw_Ads.slice(raw_Ads.indexOf("Start_Of_latestVersion") + 22, raw_Ads.indexOf("End_Of_latestVersion"));
           
+          let link = raw_Ads.slice(raw_Ads.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
+
           console.log(latestVersion);
           console.log(link);
-          
+
           //Validate
           if (1 < latestVersion) {
             myAlertWork(`Please update the app ${link}.`);
