@@ -1260,11 +1260,13 @@ ${GradeOption}
           raw_Ads = raw_Ads.replace(/\\/g, '');
           arrayAds(raw_Ads);
 
-//Version control
+          //Version control
           let latestVersion = raw_Ads.slice(reply.indexOf("Start_Of_latestVersion") + 22, raw_Ads.indexOf("End_Of_latestVersion"));
           let link = raw_Ads.slice(reply.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
-console.log(latestVersion);
-console.log(link);
+          
+          console.log(latestVersion);
+          console.log(link);
+          
           //Validate
           if (1 < latestVersion) {
             myAlertWork(`Please update the app ${link}.`);
