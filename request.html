@@ -1230,7 +1230,7 @@ ${GradeOption}
       try {
         requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
       } catch (e) {
-        console.log("Thata err");
+
         console.log(e);
       }
     } else {
@@ -1238,7 +1238,7 @@ ${GradeOption}
         try {
           requestAds("https://github.com/onlinewithbeta/Tips-/blob/main/ads.json");
         } catch (e) {
-          console.log("Thata err");
+          console.log(e);
         }
       });
     }
@@ -1263,15 +1263,21 @@ ${GradeOption}
 
           //Version control
           let latestVersion = raw_Ads.slice(raw_Ads.indexOf("Start_Of_latestVersion") + 22, raw_Ads.indexOf("End_Of_latestVersion"));
-          
-          let link = raw_Ads.slice(raw_Ads.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
 
-          console.log(latestVersion);
-          console.log(link);
+          
 
           //Validate
           if (1 < latestVersion) {
-            myAlertWork(`Please update the app ${link}.`);
+            myAlertWork(`Please update the app. <br />
+            
+            <button id="link">
+              Update
+            </button>.`);
+            let link = raw_Ads.slice(raw_Ads.indexOf("Start_Of_link") + 13, raw_Ads.indexOf("End_Of_link"));
+            
+            document.getElementById("link").addEventListener("click", () => {
+              app.OpenUrl(link);
+            });
           }
         }
       }
