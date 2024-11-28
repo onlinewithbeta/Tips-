@@ -72,15 +72,6 @@
 
     </footer>
 
-    <script>
-      // Smooth Scroll for Button
-      document.querySelector('.btn').addEventListener('click', () => {
-        window.scrollTo({
-          top: 260,
-          behavior: 'smooth' // Smooth scrolling
-        });
-      });
-    </script>
   </div>
 
   <div id="App_container" class="app-container">
@@ -186,10 +177,10 @@
         <h1>Daily Tips</h1>
         <div class="tip">
           <p class="tip-content" id="tipContent">
-            "Use active learning strategies to enhance your study effectiveness!"
+            Use active learning strategies to enhance your study effectiveness!
           </p>
           <p class="author" id="tipAuthor">
-            — Unknown
+            Unknown
           </p>
         </div>
         <div class="button-container">
@@ -565,7 +556,6 @@ ${GradeOption}
       EEtime++;
     }
 
-
     //We get our result
     function getGPA() {
       Grade = [];
@@ -632,6 +622,7 @@ ${GradeOption}
       SeeOrHide("GPA_Ads", "block");
       SeeOrHide("Calculator", "none")
       SeeOrHide("GPA_interface", "grid");
+      scrollUp();
       OnBack = () => {
         from_Calculator_to_Hone();
       }
@@ -1001,6 +992,7 @@ ${GradeOption}
         "grid");
       SeeOrHide("CGPA_Ads",
         "block");
+        scrollUp();
       OnBack = () => {
         from_Calculator_to_Hone();
       }
@@ -1016,6 +1008,7 @@ ${GradeOption}
         "none");
       SeeOrHide("startPage",
         "block");
+        scrollUp();
       //Can Exit App.
       OnBack = () => {
         app.Exit();
@@ -1121,6 +1114,25 @@ ${GradeOption}
     });
 
     //NAVIGATION
+    function scrollUp() {
+      window.scrollTo({
+        top: 260
+      });
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth' // Smooth scrolling
+        });
+      }, 200);
+    }
+    // Smooth Scroll for Button
+    document.querySelector('.btn').addEventListener('click', () => {
+      window.scrollTo({
+        top: 260,
+        behavior: 'smooth' // Smooth scrolling
+      });
+    });
+
     const CGPA_Button = Id("CGPA_Button");
     const GPA_Button = Id("GPA_Button");
 
@@ -1132,6 +1144,7 @@ ${GradeOption}
       OnBack = () => {
         from_Calculator_to_Hone();
       }
+      scrollUp();
     });
 
     GPA_Button.addEventListener("click", () => {
@@ -1143,6 +1156,7 @@ ${GradeOption}
       OnBack = () => {
         from_Calculator_to_Hone();
       }
+      scrollUp();
     });
 
 
@@ -1212,15 +1226,30 @@ ${GradeOption}
 
     //Ads in buult
     let In_Built_Ads = `
-        Ads_Img_S  Img/adsTest.jpg  Ads_Img_E
-        Ads_Url_S   " https://2u.wordpress.com"  Ads_Url_E
-        Ads_Alt_S   Ads 2  Ads_Alt_E
-        Ads_Owner_S   Owner2  Ads_Owner_E
+        Ads_Img_S 
+            Img/adsTest.jpg 
+        Ads_Img_E
+        Ads_Url_S
+             https://1u.wordpress.com
+        Ads_Url_E
+        Ads_Alt_S 
+            in built ads 1
+        Ads_Alt_E
+        Ads_Owner_S 
+            Owner1 
+        Ads_Owner_E
 
-        Ads_Img_S  Img/adsTest.jpg Ads_Img_E
-        Ads_Url_S  "https://3u.wordpress.com"  Ads_Url_E
-        Ads_Alt_S  Ads3 Ads_Alt_E
-        Ads_Owner_S  Owner3 Ads_Owner_E
+        Ads_Img_S 
+            Img/adsTest.jpg
+        Ads_Img_E
+        Ads_Url_S  
+            https://2u.wordpress.com
+        Ads_Url_E
+        Ads_Alt_S 
+            in built ads 2
+        Ads_Alt_E
+        Ads_Owner_S 
+        Ads_Owner_E
         `;
 
     let raw_Ads = "Nothing ";
